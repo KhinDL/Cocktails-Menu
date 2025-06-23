@@ -1,3 +1,3 @@
-Small Project for a simple Coctail menu
+Small Project for a simple Cocktail menu
 
 https://khindl.github.io/Cocktails-Menu
