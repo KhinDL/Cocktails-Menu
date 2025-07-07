@@ -1,0 +1,718 @@
+/* Modern Minimalist Cocktail Menu */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Neutral Color Palette */
+  --color-white: #ffffff;
+  --color-black: #1a1a1a;
+  --color-beige: #f8f6f0;
+  --color-beige-dark: #e8e4d9;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  
+  /* Accent Colors */
+  --color-teal: #14b8a6;
+  --color-teal-light: #5eead4;
+  --color-teal-dark: #0f766e;
+  --color-gold: #d97706;
+  --color-gold-light: #fbbf24;
+  --color-gold-dark: #92400e;
+  
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.3s ease-out;
+  --transition-slow: 0.5s ease-out;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-white);
+  color: var(--color-gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-black);
+  margin-bottom: var(--space-md);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-gray-600);
+}
+
+/* Layout Components */
+.minimalist-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.minimalist-grid {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.minimalist-flex {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Header */
+.minimalist-header {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: var(--space-lg) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.minimalist-logo {
+  font-family: var(--font-secondary);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-black);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.minimalist-logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-teal), var(--color-teal-dark));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.minimalist-tagline {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Sidebar */
+.minimalist-sidebar {
+  background-color: var(--color-beige);
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  border-right: 1px solid var(--color-gray-200);
+}
+
+.minimalist-sidebar-header {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.minimalist-sidebar-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--space-xs);
+}
+
+.minimalist-sidebar-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  font-weight: 400;
+}
+
+.minimalist-category-item {
+  display: block;
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-sm);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.minimalist-category-item:hover {
+  background-color: var(--color-white);
+  color: var(--color-teal);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.minimalist-category-item.active {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.minimalist-category-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--color-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Main Content */
+.minimalist-main {
+  background-color: var(--color-white);
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding: var(--space-2xl);
+}
+
+.minimalist-welcome {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.minimalist-welcome-icon {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--color-beige), var(--color-beige-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-xl);
+  font-size: 3rem;
+}
+
+.minimalist-welcome-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-black);
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+}
+
+.minimalist-welcome-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-gray-500);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Section Header */
+.minimalist-section-header {
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.minimalist-section-title {
+  font-size: 2.25rem;
+  font-weight: 300;
+  color: var(--color-black);
+  margin-bottom: var(--space-sm);
+}
+
+.minimalist-section-accent {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+  border-radius: var(--radius-sm);
+}
+
+/* Cocktail Cards */
+.minimalist-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  border: 1px solid var(--color-gray-100);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.minimalist-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-gray-200);
+}
+
+.minimalist-card-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.minimalist-card:hover .minimalist-card-image {
+  transform: scale(1.05);
+}
+
+.minimalist-card-content {
+  padding: var(--space-xl);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.minimalist-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.minimalist-card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.minimalist-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-teal), var(--color-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons */
+.minimalist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.minimalist-btn-primary {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.minimalist-btn-primary:hover {
+  background-color: var(--color-teal-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.minimalist-btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-300);
+}
+
+.minimalist-btn-secondary:hover {
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-400);
+}
+
+.minimalist-btn-gold {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+.minimalist-btn-gold:hover {
+  background-color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Cart Button */
+.minimalist-cart-btn {
+  position: relative;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+}
+
+.minimalist-cart-btn:hover {
+  background-color: var(--color-gray-800);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.minimalist-cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Loading States */
+.minimalist-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl);
+}
+
+.minimalist-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-gray-200);
+  border-top: 2px solid var(--color-teal);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Alerts */
+.minimalist-alert {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  margin: var(--space-lg) 0;
+  border-left: 4px solid;
+}
+
+.minimalist-alert-info {
+  background-color: rgba(20, 184, 166, 0.1);
+  border-color: var(--color-teal);
+  color: var(--color-teal-dark);
+}
+
+.minimalist-alert-warning {
+  background-color: rgba(217, 119, 6, 0.1);
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+}
+
+/* Cart Modal */
+.minimalist-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.minimalist-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 600px;
+  width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.minimalist-modal-header {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--color-gray-200);
+  background-color: var(--color-beige);
+}
+
+.minimalist-modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.minimalist-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-gray-500);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.minimalist-modal-close:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+.minimalist-modal-body {
+  padding: var(--space-xl);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.minimalist-modal-footer {
+  padding: var(--space-xl);
+  border-top: 1px solid var(--color-gray-200);
+  background-color: var(--color-gray-50);
+}
+
+/* Cart Items */
+.minimalist-cart-item {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  margin-bottom: var(--space-md);
+}
+
+.minimalist-cart-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.minimalist-cart-details {
+  flex: 1;
+}
+
+.minimalist-cart-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--space-xs);
+}
+
+.minimalist-cart-price {
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-teal), var(--color-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.minimalist-cart-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.minimalist-quantity-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.minimalist-quantity-btn:hover {
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-400);
+}
+
+.minimalist-quantity {
+  font-weight: 600;
+  color: var(--color-black);
+  min-width: 32px;
+  text-align: center;
+}
+
+.minimalist-remove-btn {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+}
+
+.minimalist-remove-btn:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Empty Cart */
+.minimalist-empty-cart {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.minimalist-empty-icon {
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-gray-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-xl);
+  font-size: 2.5rem;
+  color: var(--color-gray-400);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .minimalist-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .minimalist-sidebar {
+    height: auto;
+    position: static;
+  }
+  
+  .minimalist-main {
+    padding: var(--space-lg);
+  }
+  
+  .minimalist-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .minimalist-welcome-title {
+    font-size: 2rem;
+  }
+  
+  .minimalist-section-title {
+    font-size: 1.75rem;
+  }
+  
+  .minimalist-modal {
+    width: 95vw;
+    max-height: 90vh;
+  }
+  
+  .minimalist-cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .minimalist-cart-image {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.minimalist-btn:focus,
+.minimalist-category-item:focus,
+.minimalist-cart-btn:focus {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
